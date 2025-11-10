@@ -1,0 +1,21 @@
+<div class="eliminar-mascota" *ngIf="mascota">
+  <app-header></app-header>
+  <main>
+  <h2>Eliminar Mascota</h2>
+  <div class="delete-card">
+    <p>¿Está seguro de eliminar la siguiente mascota?</p>
+    <div class="mascota-info">
+      <p><strong>ID:</strong> {{ mascota.idMascota }}</p>
+      <p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
+      <p><strong>Especie:</strong> {{ mascota.especie }}</p>
+      <p><strong>Dueño:</strong> {{ mascota.dueno }}</p>
+    </div>
+    <div class="actions">
+      <button class="btn-delete" (click)="confirmDelete()">Eliminar</button>
+      <button class="btn-cancel" (click)="cancel()">Cancelar</button>
+    </div>
+  </div>
+  </main>
+  <app-footer></app-footer>
+</div>
+

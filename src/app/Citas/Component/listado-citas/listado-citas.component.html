@@ -1,0 +1,42 @@
+<div class="listado-citas">
+  <app-header></app-header>
+  <main>
+  <h2>Lista de Citas</h2>
+  <div class="actions">
+    <a [routerLink]="['/citas/agendar']" class="btn-primary">Agendar Nueva Cita</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID Cita</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Mascota</th>
+        <th>Motivo</th>
+        <th>Veterinario</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas">
+        <td>{{ cita.idCita }}</td>
+        <td>{{ cita.fechaCita }}</td>
+        <td>{{ cita.horaCita }}</td>
+        <td>{{ getMascotaNombre(cita.idMascota) }}</td>
+        <td>{{ cita.motivo }}</td>
+        <td>{{ cita.veterinarioAsignado }}</td>
+        <td>{{ cita.estadoCita }}</td>
+        <td>
+          <button (click)="deleteCita(cita.idCita)">Eliminar</button>
+        </td>
+      </tr>
+      <tr *ngIf="citas.length === 0">
+        <td colspan="8" style="text-align: center;">No hay citas registradas</td>
+      </tr>
+    </tbody>
+  </table>
+  </main>
+  <app-footer></app-footer>
+</div>
+

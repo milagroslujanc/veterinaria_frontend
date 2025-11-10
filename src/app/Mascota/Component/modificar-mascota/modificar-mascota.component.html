@@ -1,0 +1,111 @@
+<div class="modificar-mascota">
+  <app-header></app-header>
+  <main>
+<mat-card>
+  <mat-card-title>Modificar Datos de Mascota</mat-card-title>
+  <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>ID Mascota</mat-label>
+      <input matInput formControlName="idMascota" readonly>
+      <mat-hint>ID no editable</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" [class.is-invalid]="isFieldInvalid('nombre')">
+      <mat-error *ngIf="isFieldInvalid('nombre')">
+        {{ getErrorMessage('nombre') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Especie</mat-label>
+      <input matInput formControlName="especie" [class.is-invalid]="isFieldInvalid('especie')">
+      <mat-error *ngIf="isFieldInvalid('especie')">
+        {{ getErrorMessage('especie') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Raza</mat-label>
+      <input matInput formControlName="raza" [class.is-invalid]="isFieldInvalid('raza')">
+      <mat-error *ngIf="isFieldInvalid('raza')">
+        {{ getErrorMessage('raza') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sexo</mat-label>
+      <mat-select formControlName="sexo" [class.is-invalid]="isFieldInvalid('sexo')">
+        <mat-option value="Macho">Macho</mat-option>
+        <mat-option value="Hembra">Hembra</mat-option>
+      </mat-select>
+      <mat-error *ngIf="isFieldInvalid('sexo')">
+        {{ getErrorMessage('sexo') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput formControlName="fechaNacimiento" type="date" [class.is-invalid]="isFieldInvalid('fechaNacimiento')">
+      <mat-error *ngIf="isFieldInvalid('fechaNacimiento')">
+        {{ getErrorMessage('fechaNacimiento') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Peso (kg)</mat-label>
+      <input matInput formControlName="peso" type="number" step="0.1" [class.is-invalid]="isFieldInvalid('peso')">
+      <mat-error *ngIf="isFieldInvalid('peso')">
+        {{ getErrorMessage('peso') }}
+      </mat-error>
+      <mat-hint>Ingrese el peso en kilogramos (máximo 200 kg)</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Color</mat-label>
+      <input matInput formControlName="color" [class.is-invalid]="isFieldInvalid('color')">
+      <mat-error *ngIf="isFieldInvalid('color')">
+        {{ getErrorMessage('color') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Dueño</mat-label>
+      <input matInput formControlName="dueno" [class.is-invalid]="isFieldInvalid('dueno')">
+      <mat-error *ngIf="isFieldInvalid('dueno')">
+        {{ getErrorMessage('dueno') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Celular de Contacto</mat-label>
+      <input matInput formControlName="celularContacto" type="tel" placeholder="9XXXXXXXX" [class.is-invalid]="isFieldInvalid('celularContacto')">
+      <mat-error *ngIf="isFieldInvalid('celularContacto')">
+        {{ getErrorMessage('celularContacto') }}
+      </mat-error>
+      <mat-hint>Ingrese 9 dígitos</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Correo de Contacto</mat-label>
+      <input matInput formControlName="correoContacto" type="email" [class.is-invalid]="isFieldInvalid('correoContacto')">
+      <mat-error *ngIf="isFieldInvalid('correoContacto')">
+        {{ getErrorMessage('correoContacto') }}
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="petForm.invalid && submitted">
+        Actualizar
+      </button>
+      <button mat-raised-button type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>
+  </main>
+  <app-footer></app-footer>
+</div>
+

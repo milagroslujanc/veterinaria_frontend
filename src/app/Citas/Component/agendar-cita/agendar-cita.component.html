@@ -1,0 +1,97 @@
+<div class="agendar-cita">
+  <app-header></app-header>
+  <main>
+<mat-card>
+  <mat-card-title>Agendar Cita</mat-card-title>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>ID Cita</mat-label>
+      <input matInput formControlName="idCita" readonly>
+      <mat-hint>ID generado automáticamente</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mascota</mat-label>
+      <mat-select formControlName="idMascota" [class.is-invalid]="isFieldInvalid('idMascota')">
+        <mat-option *ngFor="let mascota of mascotas" [value]="mascota.idMascota">
+          {{ mascota.nombre }} - {{ mascota.especie }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="isFieldInvalid('idMascota')">
+        {{ getErrorMessage('idMascota') }}
+      </mat-error>
+      <mat-hint *ngIf="mascotas.length === 0">No hay mascotas registradas</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Cita</mat-label>
+      <input matInput formControlName="fechaCita" type="date" [class.is-invalid]="isFieldInvalid('fechaCita')">
+      <mat-error *ngIf="isFieldInvalid('fechaCita')">
+        {{ getErrorMessage('fechaCita') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Hora de Cita</mat-label>
+      <input matInput formControlName="horaCita" type="time" [class.is-invalid]="isFieldInvalid('horaCita')">
+      <mat-error *ngIf="isFieldInvalid('horaCita')">
+        {{ getErrorMessage('horaCita') }}
+      </mat-error>
+      <mat-hint>Horario de atención: 08:00 - 20:00</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Motivo</mat-label>
+      <textarea matInput formControlName="motivo" rows="3" [class.is-invalid]="isFieldInvalid('motivo')"></textarea>
+      <mat-error *ngIf="isFieldInvalid('motivo')">
+        {{ getErrorMessage('motivo') }}
+      </mat-error>
+      <mat-hint>Describa el motivo de la cita (mínimo 5 caracteres)</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Veterinario Asignado</mat-label>
+      <mat-select formControlName="veterinarioAsignado" [class.is-invalid]="isFieldInvalid('veterinarioAsignado')">
+        <mat-option value="Dr. Lujan">Dr. Lujan</mat-option>
+        <mat-option value="Dr. Quispe">Dr. Quispe</mat-option>
+      </mat-select>
+      <mat-error *ngIf="isFieldInvalid('veterinarioAsignado')">
+        {{ getErrorMessage('veterinarioAsignado') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Estado de Cita</mat-label>
+      <mat-select formControlName="estadoCita" [class.is-invalid]="isFieldInvalid('estadoCita')">
+        <mat-option value="Programada">Programada</mat-option>
+        <mat-option value="Confirmada">Confirmada</mat-option>
+        <mat-option value="Cancelada">Cancelada</mat-option>
+      </mat-select>
+      <mat-error *ngIf="isFieldInvalid('estadoCita')">
+        {{ getErrorMessage('estadoCita') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observaciones" rows="3" [class.is-invalid]="isFieldInvalid('observaciones')"></textarea>
+      <mat-error *ngIf="isFieldInvalid('observaciones')">
+        {{ getErrorMessage('observaciones') }}
+      </mat-error>
+      <mat-hint>Opcional: información adicional sobre la cita</mat-hint>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="appointmentForm.invalid && submitted">
+        Agendar Cita
+      </button>
+      <button mat-raised-button type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>
+  </main>
+  <app-footer></app-footer>
+</div>
+

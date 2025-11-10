@@ -1,0 +1,40 @@
+<div class="lista-mascotas">
+  <app-header></app-header>
+  <main>
+    <div class="actions">
+      <a [routerLink]="['/mascota/registro']" class="btn-primary">Registrar Nueva Mascota</a>
+    </div>
+    <h2>Lista de Mascotas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Raza</th>
+          <th>Dueño</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotas">
+          <td>{{ mascota.idMascota }}</td>
+          <td>{{ mascota.nombre }}</td>
+          <td>{{ mascota.especie }}</td>
+          <td>{{ mascota.raza }}</td>
+          <td>{{ mascota.dueno }}</td>
+          <td>
+            <a [routerLink]="['/mascota/detalle', mascota.idMascota]">Ver</a>
+            <a [routerLink]="['/mascota/modificar', mascota.idMascota]">Editar</a>
+            <button (click)="deleteMascota(mascota.idMascota)">Eliminar</button>
+          </td>
+        </tr>
+        <tr *ngIf="mascotas.length === 0">
+          <td colspan="6" style="text-align: center;">No hay mascotas registradas</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <app-footer></app-footer>
+</div>
+

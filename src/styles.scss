@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+// Define custom color palette
+$primary-color: #3F51B5;
+$secondary-color: #009688;
+$background-color: #F8F9FA;
+$text-color: #212121;
+$error-color: #F44336;
+
+// Apply custom colors to Angular Material theme
+@use '@angular/material' as mat;
+/*
+html {
+  @include mat.all-component-themes((
+    color: (
+      primary: mat.$indigo,
+      secondary: mat.$teal,
+      background: mat.$grey,
+      error: mat.$red,
+    ),
+    typography: mat.$typography,
+  ));
+}
+*/
+body {
+  background-color: var(--mat-background);
+  color: var(--mat-on-background);
+}

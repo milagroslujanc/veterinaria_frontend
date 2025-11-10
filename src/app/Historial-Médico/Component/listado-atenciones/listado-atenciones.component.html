@@ -1,0 +1,56 @@
+<div class="listado-atenciones">
+  <app-header></app-header>
+  <main>
+    <h2>Historial Médico - Búsqueda de Atenciones</h2>
+    
+    <div class="search-form">
+      <form [formGroup]="searchForm" (ngSubmit)="buscarAtenciones()">
+        <mat-form-field appearance="fill">
+          <mat-label>ID de Mascota</mat-label>
+          <input matInput formControlName="idMascota" placeholder="Ingrese el ID de la mascota">
+        </mat-form-field>
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit">Buscar</button>
+          <button mat-raised-button type="button" (click)="limpiarBusqueda()">Limpiar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="results" *ngIf="mostrarResultados">
+      <h3>Resultados de la Búsqueda</h3>
+      <table *ngIf="atencionesFiltradas.length > 0">
+        <thead>
+          <tr>
+            <th>ID Atención</th>
+            <th>ID Cita</th>
+            <th>Mascota</th>
+            <th>Fecha Atención</th>
+            <th>Veterinario</th>
+            <th>Diagnóstico</th>
+            <th>Estado Final</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let atencion of atencionesFiltradas">
+            <td>{{ atencion.idAtencion }}</td>
+            <td>{{ atencion.idCita }}</td>
+            <td>{{ getMascotaNombre(atencion.idMascota) }}</td>
+            <td>{{ atencion.fechaAtencionReal }}</td>
+            <td>{{ atencion.veterinario }}</td>
+            <td>{{ atencion.diagnostico }}</td>
+            <td>{{ atencion.estadoFinal }}</td>
+            <td>
+              <a [routerLink]="['/historial-medico/detalle', atencion.idAtencion]">Ver Detalle</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="atencionesFiltradas.length === 0" class="no-results">
+        No se encontraron atenciones para esta mascota.
+      </p>
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>
+

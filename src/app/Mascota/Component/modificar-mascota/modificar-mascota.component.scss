@@ -1,0 +1,47 @@
+.modificar-mascota {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  button {
+    flex: 1;
+  }
+}
+
+.is-invalid {
+  border-color: #f44336;
+}
+
+mat-error {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+mat-hint {
+  font-size: 0.75rem;
+}
+

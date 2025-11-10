@@ -1,0 +1,62 @@
+<div class="detalle-mascota" *ngIf="mascota">
+  <app-header></app-header>
+  <main>
+  <h2>Detalle de Mascota</h2>
+  <div class="detail-card">
+    <div class="detail-row">
+      <strong>ID Mascota:</strong>
+      <span>{{ mascota.idMascota }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Nombre:</strong>
+      <span>{{ mascota.nombre }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Especie:</strong>
+      <span>{{ mascota.especie }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Raza:</strong>
+      <span>{{ mascota.raza }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Sexo:</strong>
+      <span>{{ mascota.sexo }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Fecha de Nacimiento:</strong>
+      <span>{{ mascota.fechaNacimiento }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Peso:</strong>
+      <span>{{ mascota.peso }} kg</span>
+    </div>
+    <div class="detail-row">
+      <strong>Color:</strong>
+      <span>{{ mascota.color }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Dueño:</strong>
+      <span>{{ mascota.dueno }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Celular de Contacto:</strong>
+      <span>{{ mascota.celularContacto }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Correo de Contacto:</strong>
+      <span>{{ mascota.correoContacto }}</span>
+    </div>
+    <div class="detail-row">
+      <strong>Fecha de Registro:</strong>
+      <span>{{ mascota.fechaRegistro }}</span>
+    </div>
+    <div class="actions">
+      <a [routerLink]="['/mascota/modificar', mascota.idMascota]" class="btn-edit">Editar</a>
+      <a [routerLink]="['/mascota/lista']" class="btn-back">Volver</a>
+    </div>
+  </div>
+  </main>
+  <app-footer></app-footer>
+</div>
+

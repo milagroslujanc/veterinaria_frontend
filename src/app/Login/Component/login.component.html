@@ -1,0 +1,27 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="username" [class.is-invalid]="isFieldInvalid('username')">
+      <mat-error *ngIf="isFieldInvalid('username')">
+        {{ getErrorMessage('username') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" [class.is-invalid]="isFieldInvalid('password')">
+      <mat-error *ngIf="isFieldInvalid('password')">
+        {{ getErrorMessage('password') }}
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid && submitted">
+      Iniciar Sesión
+    </button>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

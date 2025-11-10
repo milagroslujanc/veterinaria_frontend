@@ -1,0 +1,11 @@
+<header>
+  <h1>SmartVet</h1>
+  <nav>
+    <ul>
+      <li *ngFor="let option of menuOptions">
+        <a [routerLink]="option.route">{{ option.label }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
